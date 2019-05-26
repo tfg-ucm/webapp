@@ -1,0 +1,209 @@
+<%- include ../partials/head.ejs %>
+<%- include ../partials/navbar.ejs %>
+<%- include ../partials/messages.ejs %>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="modal-modificar-pr">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-dark"><strong>Datos del punto de recompesa</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <form method="post" class="mb-3">
+                        <div class="form-group d-flex align-items-center">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
+                                <input class="form-control" type="text"></div>
+                        </div>
+                        <div class="form-group d-flex align-items-center">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend"><span class="input-group-text">Descripción</span></div>
+                                <input class="form-control" type="text"></div>
+                        </div>
+                        <div class="form-group d-flex align-items-center">
+                            <div class="input-group mb-3 mr-2">
+                                <div class="input-group-prepend"><span class="input-group-text">Longitud</span></div>
+                                <input class="form-control" type="text"></div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend"><span class="input-group-text">Latitud</span></div>
+                                <input class="form-control" type="text"></div>
+                        </div>
+                        <div class="form-group d-flex align-items-center">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend"><span class="input-group-text">Ciudad</span></div>
+                                <input class="form-control" type="text"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-2">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Puntos de
+                    recompensa</a></li>
+            <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Crear punto de
+                    recompensa</a></li>
+        </ul>
+
+        <!-- Pestanas -->
+
+        <div class="tab-content">
+
+            <!-- Pestana 1 -->
+
+            <div class="tab-pane active" role="tabpanel" id="tab-1">
+                <div id="puntos-recompensa" class="tab-panel">
+                    <label>
+                        <strong>Lista de puntos de recompensa</strong><br>
+                    </label>
+                    <hr>
+
+                    <% if(typeof puntos != 'undefined') { %>
+                        <% if(puntos.length === 0) { %>
+                            <div class="alert alert-warning" role="alert">
+                                No hay Puntos de recompensa creados
+                            </div>
+                        <% } else { %>
+                            <div class="form-container">
+                                <form method="post" class="mb-3">
+
+                                    <div id="accordion">
+                                        <% puntos.forEach(result => { %>
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>
+                                                        <input type="checkbox" class="align-rigth">
+                                                        <button class="btn btn-link" type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#<%= result.name %>"><%= result.name %></button>
+                                                    </h5>
+                                                </div>
+                                                <div id="<%= result.name %>" class="collapse" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="form-group d-flex align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Descripción</span>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="<%= result.description %>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group d-flex align-items-center">
+                                                            <div class="input-group mb-3 mr-2">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Longitud</span>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="<%= result.longitud %>">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Latitud</span>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="<%= result.latitud %>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group d-flex align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Ciudad</span>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="<%= result.ciudad %>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% }); %>
+                                    </div>
+                                </form>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button class="btn btn-primary btn-block" type="submit"
+                                                    id="boton-modificar-pr">
+                                                Modificar (selección única)
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-danger btn-block" type="submit">Eliminar (selección
+                                                única
+                                                o múltiple)
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <div class="alert alert-warning" role="alert">
+                            No hay Puntos de recompensa creados
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Pestana 2 -->
+
+            <div class="tab-pane" role="tabpanel" id="tab-2">
+                <div id="crear-puntos-recompensa" class="tab-panel">
+                    <label>
+                        <strong>Datos del punto de recompesa</strong>
+                    </label>
+                    <hr>
+                    <div class="form-container">
+                        <form method="POST" class="mb-3">
+                            <div class="form-group d-flex align-items-center">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
+                                    <input class="form-control" type="text" name="name"></div>
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend"><span class="input-group-text">Descripción</span>
+                                    </div>
+                                    <input class="form-control" type="text" name="description"></div>
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <div class="input-group mb-3 mr-2">
+                                    <div class="input-group-prepend"><span class="input-group-text">Longitud</span>
+                                    </div>
+                                    <input class="form-control" type="text" name="longitud"></div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend"><span class="input-group-text">Latitud</span></div>
+                                    <input class="form-control" type="text" name="latitud">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend"><span class="input-group-text">Ciudad</span></div>
+                                    <input class="form-control" type="text" name="ciudad">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block" type="submit">Crear punto de recompensa
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>

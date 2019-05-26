@@ -1,0 +1,37 @@
+<%- include ../partials/head.ejs %>
+<%- include ../partials/messages.ejs %>
+
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form method="post">
+            <h2 class="text-center"><strong>Crear una cuenta</strong></h2>
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password-repeat" placeholder="Repetir password">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="type">
+                    <optgroup label="Tipo de usuario...">
+                        <option value="user" selected="">Usuario</option>
+                        <option value="hostelero">Hostelero</option>
+                        <option value="admin">Administrador</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Crear cuenta</button>
+            </div>
+            <a href="login" class="already">¿Ya tienes una cuenta? Haz click aqui.</a></form>
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>

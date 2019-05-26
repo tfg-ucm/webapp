@@ -1,0 +1,7 @@
+<% if(typeof errors != 'undefined') { %>
+    <ul id="form-errors">
+        <% errors.forEach(function(error) { %>
+            <li><%= error %></li>
+        <% }) %>
+    </ul>
+<% } %>

@@ -1,0 +1,17 @@
+<%- include ../partials/head.ejs %>
+
+<div class="login-dark">
+    <form method="post" action="/accounts/login">
+        <h2 class="sr-only">Login Form</h2>
+        <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Contraseña">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" role="button">Iniciar sesión</button>
+        </div>
+        <a href="create" class="forgot">¿Aún no tienes cuenta? Haz click aqui.</a>
+    </form>
+</div>
+
+<%- include ../partials/footer.ejs %>

@@ -1,0 +1,12 @@
+<%- include partials/head.ejs %>
+
+<div class="container align-content-center">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Error!</h4>
+        <p><%= message.message %></p>
+        <p>Status code: <%= message.status %></p>
+        <p>Stack: <%= message.stack %></p>
+    </div>
+</div>
+
+<%- include partials/footer.ejs %>
