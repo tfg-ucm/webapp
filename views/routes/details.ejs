@@ -1,303 +1,307 @@
-<%- include ../partials/head.ejs %>
-<%- include ../partials/navbar.ejs %>
+<%- include ../partials/head.ejs %> <%- include ../partials/navbar.ejs %>
 
-<div class="modal fade" role="dialog" tabindex="-1" id="modal-modificar-r">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-dark"><strong>Datos de la ruta</strong></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-container">
-                    <form method="post" class="mb-3">
-                        <div class="form-group d-flex align-items-center">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
-                                <input class="form-control" type="text"></div>
-                        </div>
-                        <div class="form-group d-flex align-items-center">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text">Descripción</span></div>
-                                <input class="form-control" type="text"></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group d-flex align-items-center col-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">Ciudad</span></div>
-                                    <input class="form-control" type="text"></div>
-                            </div>
-                            <div class="form-group d-flex align-items-center col-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">Recompensa</span>
-                                    </div>
-                                    <input class="form-control" type="text"></div>
-                            </div>
-                        </div>
-                        <label><strong>Puntos de prueba de paso requeridos</strong><br></label>
-                        <hr>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div><input type="checkbox" class="mr-2"><span>Puerta de Alcala</span></div>
-                            </li>
-                            <li class="list-group-item">
-                                <div><input type="checkbox" class="mr-2"><span>El Retiro</span></div>
-                            </li>
-                            <li class="list-group-item">
-                                <div><input type="checkbox" class="mr-2"><span>Fuente de Cibeles</span></div>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-light" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-primary" type="button">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container-fluid mt-2 container-expand-md">
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Rutas</a></li>
-            <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Crear ruta</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="tab-1">
-                <div id="rutas" class="tab-panel">
-                    <div class="form-container"><label><strong>Lista de rutas</strong><br></label>
-                        <hr>
-                        <form method="post" class="mb-3">
-                            <div id="accordion">
-                                <div class="card">
-                                    <div id="headingOne" class="card-header">
-                                        <div class="d-lg-flex align-items-lg-center">
-                                            <h5><input type="checkbox">
-                                                <button class="btn btn-link show" type="button" data-toggle="collapse"
-                                                        data-target="#collapseOne">Ruta Barrio del Retiro
-                                                </button>
-                                            </h5>
-                                            <button class="btn btn-success btn-sm d-lg-flex"
-                                                    type="button">Empezar
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="form-group d-flex align-items-center">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend"><span class="input-group-text">Descripción</span>
-                                                    </div>
-                                                    <input class="form-control" type="text"
-                                                           value="Esta es una descripción de prueba" readonly=""></div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Ciudad</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly=""
-                                                               value="Madrid"></div>
-                                                </div>
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Recompensa</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly="" value="10€">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <label><strong>Puntos de prueba de paso necesarios</strong><br></label>
-                                            <hr>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <div><span>Puerta de Alcala</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>El Retiro</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>Fuente de Cibeles</span></div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="d-block card-header" id="headingTwo">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h5><input type="checkbox">
-                                                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                                                            data-target="#collapseTwo">Ruta Barrio Salamanca
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="form-group d-flex align-items-center">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend"><span class="input-group-text">Descripción</span>
-                                                    </div>
-                                                    <input class="form-control" type="text"
-                                                           value="Esta es una descripción de prueba" readonly=""></div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Ciudad</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly=""
-                                                               value="Madrid"></div>
-                                                </div>
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Recompensa</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly="" value="10€">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <label><strong>Puntos de prueba de paso necesarios</strong><br></label>
-                                            <hr>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <div><span>Puerta de Alcala</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>El Retiro</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>Fuente de Cibeles</span></div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div id="headingThree" class="card-header">
-                                        <h5><input type="checkbox">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                                    data-target="#collapseThree">Ruta Barrio Chamberí
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="form-group d-flex align-items-center">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend"><span class="input-group-text">Descripción</span>
-                                                    </div>
-                                                    <input class="form-control" type="text"
-                                                           value="Esta es una descripción de prueba" readonly=""></div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Ciudad</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly=""
-                                                               value="Madrid"></div>
-                                                </div>
-                                                <div class="form-group d-flex align-items-center col-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">Recompensa</span>
-                                                        </div>
-                                                        <input class="form-control" type="text" readonly="" value="10€">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <label><strong>Puntos de prueba de paso necesarios</strong><br></label>
-                                            <hr>
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <div><span>Puerta de Alcala</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>El Retiro</span></div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div><span>Fuente de Cibeles</span></div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+  <div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1"
+          >Rutas</a
+        >
+      </li>
+
+      <%/* if(role === "admin"){ */%>
+
+      <li class="nav-item">
+        <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2"
+          >Crear ruta</a
+        >
+      </li>
+
+      <%/* } */%>
+    </ul>
+
+    <!-- Pestanas -->
+
+    <div class="tab-content">
+      
+      <!-- Pestana 1 -->
+
+      <div class="tab-pane active" role="tabpanel" id="tab-1">
+        <div id="rutas" class="tab-panel">
+          <label> 
+            <strong>Lista de rutas</strong><br /> 
+          </label>
+          <hr />
+
+          <% if(typeof rutas != 'undefined' && rutas.length != 0) { %>
+
+          <div class="form-container">
+            
+              <div id="accordion">
+
+                <!-- Lista de tarjetas desplegables -->
+
+                <% rutas.forEach(result => { %>
+
+                <div class="card mb-2">
+                  <div class="card-header d-flex  align-items-center">
+
+                    <h5 class="mr-auto">
+                      <button
+                        class="btn btn-link"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#<%= result.name.replace(/ /g, "") %>"
+                      >
+                        <%= result.name %>
+                      </button>
+                    </h5>
+
+                    <h6 class="text-muted mr-4">
+                      <%= result.ciudad %>
+                    </h6>
+
+                    <form 
+                    method="POST" 
+                    action="/rewards">
+                    <input class="d-none" type="text" name="name" value="<%= result.name %>">
+                    <input class="d-none" type="text" name="ciudad" value="<%= result.ciudad %>">
+                    <input class="d-none" type="text" name="recompensa" value="<%= result.recompensa %>">
+                    <input class="d-none" type="array" name="puntos" value="<%= result.puntos %>">
+                      <button
+                          class="btn btn-success btn-sm mr-4"
+                          type="submit"
+                        >
+                          Empezar
+                        </button>
+                    </form>
+                  </div>
+                  <div
+                    id="<%= result.name.replace(/ /g, "") %>"
+                    class="collapse"
+                    data-parent="#accordion"
+                  >
+                    <div class="card-body">
+                      <form method="POST" class="mb-3">
+                        
+                        <!-- Descripcion -->
+                        <div class="form-group d-flex align-items-center">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Descripción</span>
                             </div>
-                        </form>
-                        <div class="form-group mt-3">
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary btn-block" type="submit" id="boton-modificar-r">
-                                        Modificar (selección única)
-                                    </button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-danger btn-block" type="submit">Eliminar (selección única o
-                                        múltiple)
-                                    </button>
-                                </div>
-                            </div>
+                            <input
+                              class="form-control"
+                              type="text"
+                              value="<%= result.descripcion %>"
+                              readonly=""
+                            />
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" role="tabpanel" id="tab-2">
-                <div id="crear-ruta" class="tab-panel">
-                    <div class="form-container"><label><strong>Datos de la recompesa</strong></label>
-                        <hr>
-                        <form method="post" class="mb-3">
-                            <div class="form-group d-flex align-items-center">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
-                                    <input class="form-control" type="text"></div>
+
+                        <!-- Ciudad y recompensa -->
+                        <div class="form-row">
+                          <div class="form-group d-flex align-items-center col-6">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Ciudad</span>
+                              </div>
+                              <input
+                                class="form-control"
+                                type="text"
+                                readonly=""
+                                value="<%= result.ciudad %>"
+                              />
                             </div>
-                            <div class="form-group d-flex align-items-center">
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">Descripción</span>
-                                    </div>
-                                    <input class="form-control" type="text"></div>
+                          </div>
+                          <!-- Recompensa -->
+                          <div class="form-group d-flex align-items-center col-6">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Recompensa</span>
+                              </div>
+                              <input
+                                class="form-control"
+                                type="text"
+                                readonly=""
+                                value="<%= result.recompensa %>"
+                              />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group d-flex align-items-center col-6">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Ciudad</span>
-                                        </div>
-                                        <input class="form-control" type="text"></div>
-                                </div>
-                                <div class="form-group d-flex align-items-center col-6">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span
-                                                    class="input-group-text">Recompensa</span></div>
-                                        <input class="form-control" type="text"></div>
-                                </div>
-                            </div>
-                            <label><strong>Puntos de prueba de paso requeridos</strong><br></label>
-                            <hr>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div><input type="checkbox"><span class="ml-2">Puerta de Alcala</span></div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div><input type="checkbox" class="mr-2"><span>El Retiro</span></div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div><input type="checkbox" class="mr-2"><span>Fuente de Cibeles</span></div>
-                                </li>
-                            </ul>
-                        </form>
+                          </div>
+                        </div>
+
+                        <!-- Lista de beacons -->
+                        <label>
+                          <strong>Puntos de prueba de paso necesarios</strong
+                          ><br />
+                        </label>
+                        <hr />
+
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block" type="submit">Crear recompensa</button>
+                          <ul class="list-group">
+                          <% result.puntos.forEach(result => { %>
+
+                          <li class="list-group-item">
+                            <div><span><%= result %></span></div>
+                          </li>
+
+                          <% }); %>
+                          </ul>
                         </div>
+
+                        <%/* if(role === "admin"){ */%>
+
+                          <!-- Modificar -->
+                          <div class="col-6 d-inline-block float-left">
+                            <button
+                              class="btn btn-primary btn-block"
+                              type="submit"
+                              id="boton-modificar-ppp"
+                            >
+                              Modificar
+                            </button>
+                          </div>
+    
+                        <%/* } */%>
+
+                      </form>
+
+                      <%/* if(role === "admin"){ */%>
+
+                        <!-- Eliminar -->
+                        <div class="col-6 d-inline-block">
+                          <form
+                            method="POST"
+                            action="/routes/<%= result._id %>?_method=DELETE"
+                          >
+                            <button class="btn btn-danger btn-block" type="submit">
+                              Eliminar
+                            </button>
+                          </form>
+                        </div>
+    
+                      <%/* } */%>
+
                     </div>
+                  </div>
                 </div>
-            </div>
+
+                <% }); %>
+              </div> 
+          </div>
+
+          <% } else { %>
+
+          <div class="alert alert-warning" role="alert">
+            No hay rutas creadas
+          </div>
+
+          <% } %>
         </div>
+      </div>
+
+      <!-- Pestana 2 -->
+
+      <%/* if(role === "admin"){ */%>
+
+      <div class="tab-pane" role="tabpanel" id="tab-2">
+        <div id="crear-ruta" class="tab-panel">
+          <label>
+            <strong>Datos de la ruta</strong>
+          </label>
+          <hr />
+
+          <div class="form-container">
+            <form 
+            method="POST" 
+            class="mb-3">
+              <div class="form-group d-flex align-items-center">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Nombre</span>
+                  </div>
+                  <input class="form-control" type="text" name="name" />
+                </div>
+              </div>
+              <div class="form-group d-flex align-items-center">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Descripción</span>
+                  </div>
+                  <input class="form-control" type="text" name="descripcion" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group d-flex align-items-center col-6">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Ciudad</span>
+                    </div>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="ciudad"
+                      id="ciudad"
+                      autocomplete="off"
+                      onkeyup="myFunction()"
+                    />
+                  </div>
+                </div>
+                <div class="form-group d-flex align-items-center col-6">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Recompensa</span>
+                    </div>
+                    <input class="form-control" type="text" name="recompensa" />
+                  </div>
+                </div>
+              </div>
+
+              <label>
+                <strong>Puntos de prueba de paso requeridos</strong><br />
+              </label>
+              <hr />
+
+              <% if(typeof puntos != 'undefined' && puntos.length != 0) { %>
+
+              <ul class="list-group" id="listaBeacons">
+                <% puntos.forEach(result => { %>
+
+                <li class="list-group-item" name="<%= result.ciudad %>">
+                  <div class=" d-flex align-items-center">
+                    <input type="checkbox" name="punto" value="<%= result.name %>"/>
+                    <span class="d-none"><%= result.ciudad %></span>
+                    <span class="ml-2"><%= result.name %></span>
+                    <h6 class="text-muted ml-auto">
+                        <%= result.ciudad %>
+                  </h6>
+                  </div>
+                </li>
+
+                <% }); %>
+              </ul>
+
+              <% } else { %>
+
+              <div class="alert alert-warning" role="alert">
+                No hay Puntos de prueba de paso creados
+              </div>
+
+              <% } %>
+
+              <div class="form-group mt-3">
+                <button class="btn btn-primary btn-block" type="submit">
+                  Crear ruta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <%/* } */%>
     </div>
+  </div>
 </div>
 
-<%- include ../partials/footer.ejs %>
+<%- include ../partials/messages.ejs %> <%- include ../partials/footer.ejs %>

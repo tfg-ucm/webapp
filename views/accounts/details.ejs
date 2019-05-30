@@ -1,61 +1,106 @@
-<%- include ../partials/head.ejs %>
-<%- include ../partials/navbar.ejs %>
+<%- include ../partials/head.ejs %> <%- include ../partials/navbar.ejs %>
 
 <div class="register-photo">
-    <div class="form-container">
-        <form method="post">
-            <h2 class="text-center"><strong>Editar perfil</strong></h2><label><strong>Datos de usuario</strong></label>
-            <hr>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
-                    <input class="form-control" type="text"></div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Apellidos</span></div>
-                    <input class="form-control" type="text"></div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Email</span></div>
-                    <input class="form-control" type="email"></div>
-            </div>
-            <label><strong>Contraseña</strong></label>
-            <hr>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Contraseña antigua</span></div>
-                    <input class="form-control" type="password"></div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Contraseña nueva</span></div>
-                    <input class="form-control" type="password"></div>
-            </div>
-            <div class="form-group d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend"><span class="input-group-text">Confirmar nueva contraseña</span>
-                    </div>
-                    <input class="form-control" type="password"></div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Guardar</button>
-            </div>
-            <label><strong>Eliminar cuenta</strong></label>
-            <hr>
-            <div class="form-group d-flex align-items-xl-center">
-                <div class="d-flex align-items-xl-center row w-100">
-                    <div class="col-8"><label>Esta acción no se puede desahacer</label></div>
-                    <div class="d-flex col-4">
-                        <button class="btn btn-primary btn-block d-xl-flex justify-content-xl-center" type="submit"
-                                id="eliminar-cuenta">Eliminar cuenta
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="form-container">
+    <form
+    method="POST"
+    action="/accounts/<%= usuario._id %>?_method=PUT"
+    >
+
+      <h2 class="text-center"><strong>Editar perfil</strong></h2>
+
+      <label><strong>Datos de usuario</strong></label>
+      <hr />
+
+      <!-- Nombre -->
+      <div class="form-group d-flex align-items-center">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre</span>
+          </div>
+          <input class="form-control" type="text" name="name" value="<%= usuario.name %>" />
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="form-group d-flex align-items-center">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+          </div>
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            value="<%= usuario.email %>"
+          />
+        </div>
+      </div>
+
+      <label><strong>Contraseña</strong></label>
+      <hr />
+
+      <!-- Contrasena actual -->
+      <div class="form-group d-flex align-items-center">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Contraseña actual</span>
+          </div>
+          <input class="form-control" type="password" name="pass"/>
+        </div>
+      </div>
+      <!-- Contrasena nueva -->
+      <div class="form-group d-flex align-items-center">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Contraseña nueva</span>
+          </div>
+          <input class="form-control" type="password" name="newPass"/>
+        </div>
+      </div>
+      <!-- Confirmar nueva contraena -->
+      <div class="form-group d-flex align-items-center">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Confirmar nueva contraseña</span>
+          </div>
+          <input class="form-control" type="password" name="confirmNewPass"/>
+        </div>
+      </div>
+
+      <!-- Eliminar cuenta -->
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-container">
+    <form 
+    method="POST"
+    action="/accounts/<%= usuario._id %>?_method=DELETE"
+    >
+
+      <label><strong>Eliminar cuenta</strong></label>
+      <hr/>
+
+      <div class="form-group d-flex align-items-xl-center">
+        <div class="d-flex align-items-xl-center row w-100">
+          <div class="col-8">
+            <label>Esta acción no se puede desahacer</label>
+          </div>
+          <div class="d-flex col-4">
+            <button
+              class="btn btn-primary btn-block d-xl-flex justify-content-xl-center"
+              type="submit"
+              id="eliminar-cuenta"
+            >
+              Eliminar cuenta
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-<%- include ../partials/footer.ejs %>
+<%- include ../partials/messages.ejs %> <%- include ../partials/footer.ejs %>

@@ -1,151 +1,196 @@
-<%- include ../partials/head.ejs %>
-<%- include ../partials/navbar.ejs %>
+<%- include ../partials/head.ejs %> <%- include ../partials/navbar.ejs %>
 
-<div class="modal fade" role="dialog" tabindex="-1" id="modal-validar-r">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-dark"><strong>Codigo verificación</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-            <div class="modal-body">
-                <div class="d-lg-flex justify-content-lg-center"><img class="d-lg-flex" src="assets/img/QRcódigo.png"></div>
-            </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cerrar</button></div>
-        </div>
-    </div>
-</div>
 <div class="container-fluid mt-2 container-expand-md">
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Por terminar</a></li>
-            <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Terminadas</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="tab-1">
-                <div id="recompensas" class="tab-panel">
-                    <div class="form-container"><label><strong>Lista de rutas por terminar</strong><br></label>
-                        <hr>
-                        <div id="accordion">
-                            <div class="card">
-                                <div id="headingOne" class="card-header">
-                                    <h5><button class="btn btn-link show" type="button" data-toggle="collapse" data-target="#collapseOne">Ruta Barrio del Retiro</button></h5>
-                                </div>
-                                <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6"><label><strong>Puntos de prueba de paso completados</strong><br></label>
-                                                <hr>
-                                                <ul class="list-group text-success">
-                                                    <li class="list-group-item">
-                                                        <div><span>Puerta de Alcala</span></div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div><span>El Retiro</span></div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div><span>Fuente de Cibeles</span></div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-6"><label><strong>Puntos de prueba de paso restantes</strong><br></label>
-                                                <hr>
-                                                <ul class="list-group text-danger">
-                                                    <li class="list-group-item">
-                                                        <div>
-                                                            <div class="row">
-                                                                <div class="d-lg-flex align-items-lg-center col-6"><span>Fuente Neptuno</span></div>
-                                                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6"><button class="btn btn-success btn-sm" type="button">Validar</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div>
-                                                            <div class="row">
-                                                                <div class="d-lg-flex align-items-lg-center col-6"><span>Casa de la moneda</span></div>
-                                                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6"><button class="btn btn-success btn-sm" type="button">Validar</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div id="headingTwo" class="card-header">
-                                    <h5><button class="btn btn-link show" type="button" data-toggle="collapse" data-target="#collapseTwo">Ruta Barrio Salamanca</button></h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6"><label><strong>Puntos de prueba de paso completados</strong><br></label>
-                                                <hr>
-                                                <ul class="list-group">
-                                                    <li class="list-group-item text-success">
-                                                        <div><span>Puerta de Alcala</span></div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-6"><label><strong>Puntos de prueba de paso restantes</strong><br></label>
-                                                <hr>
-                                                <ul class="list-group text-danger">
-                                                    <li class="list-group-item">
-                                                        <div>
-                                                            <div class="row">
-                                                                <div class="d-lg-flex align-items-lg-center col-6"><span>Fuente Neptuno</span></div>
-                                                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6"><button class="btn btn-success btn-sm" type="button">Validar</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div>
-                                                            <div class="row">
-                                                                <div class="d-lg-flex align-items-lg-center col-6"><span>Casa de la moneda</span></div>
-                                                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6"><button class="btn btn-success btn-sm" type="button">Validar</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div>
-                                                            <div class="row">
-                                                                <div class="d-lg-flex align-items-lg-center col-6"><span>Fuente Cibeles</span></div>
-                                                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6"><button class="btn btn-success btn-sm" type="button">Validar</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1"
+          >Por terminar</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2"
+          >Terminadas</a
+        >
+      </li>
+    </ul>
+
+    <!-- Pestanas -->
+
+    <div class="tab-content">
+
+    <!-- Pestana 1 -->
+
+      <div class="tab-pane active" role="tabpanel" id="tab-1">
+        <div id="recompensas" class="tab-panel">
+            <label>
+              <strong>Lista de rutas por terminar</strong><br />
+            </label>
+            <hr />
+
+            <% if(typeof rutas != 'undefined' && rutas.length != 0) { %>
+
+          <div class="form-container">
+            
+            <div id="accordion">
+
+              <!-- Lista de tarjetas desplegables -->
+
+              <% rutas.forEach(result => { %>
+
+              <% if (!result.terminada){ %>
+
+              <div class="card mb-2">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  
+                  <h5>
+                    <button
+                      class="btn btn-link show"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#<%= result.name.replace(/ /g, "") %>"
+                    >
+                    <%= result.name %>
+                    </button>
+                  </h5>
+                  <h6 class="mr-4 text-muted ">
+                      <%= result.ciudad %>
+                </h6>
+
                 </div>
-            </div>
-            <div class="tab-pane" role="tabpanel" id="tab-2">
-                <div id="crear-recompensa" class="tab-panel">
-                    <div class="form-container"><label><strong>Lista de rutas terminadas</strong><br></label>
-                        <hr>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="d-lg-flex align-items-lg-center col-8"><span>Ruta barrio de Tetuan</span></div>
-                                    <div class="d-lg-flex justify-content-lg-end col-4"><button class="btn btn-success btn-sm" type="button" id="boton-validar-r">Validar recompensa</button></div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="d-lg-flex align-items-lg-center col-8"><span>Ruta barrio de Chamartin</span></div>
-                                    <div class="d-lg-flex justify-content-lg-end col-4"><button class="btn btn-success btn-sm" type="button" disabled="disabled">Validar recompensa</button></div>
-                                </div>
-                            </li>
+                <div id="<%= result.name.replace(/ /g, "") %>" 
+                  class="collapse" 
+                  data-parent="#accordion">
+
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+
+                        <label>
+                          <strong>Puntos de prueba de paso completados</strong><br />
+                        </label>
+                        <hr />
+
+                        <ul class="list-group text-success">
+
+                          <% result.beacons.forEach(result => { %>
+
+                          <% if (result.validado){ %>
+
+                          <li class="list-group-item">
+                            <div><span><%= result.name %></span></div>
+                          </li>
+
+                          <% } %>
+                          <% }); %>
+
                         </ul>
+                      </div>
+
+                      <div class="col-6">
+
+                        <label>
+                          <strong>Puntos de prueba de paso restantes</strong><br/>
+                        </label>
+                        <hr />
+
+                        <ul class="list-group text-danger">
+
+                            <% result.beacons.forEach(beacon2 => { %>
+
+                              <% if (!beacon2.validado){ %>
+
+                          <form method="POST" action="/beacons/validate/<%= beacon2.name %>">
+                          <li class="list-group-item">
+                            <div>
+                              <div class="row">
+                                <div class="d-lg-flex align-items-lg-center col-6">
+                                  <span><%= beacon2.name %></span>
+                                </div>
+                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6">
+                                  <input class="d-none" type="text" name="reward" value="<%= result.name %>">
+                                  <button
+                                    class="btn btn-success btn-sm"
+                                    type="submit"
+                                  >
+                                    Validar
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </form>
+                          <% } %>
+                          <% }); %>
+
+                        </ul>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
+
+              <% } %>
+
+              <% }); %>
+
             </div>
+          </div>
+
+          <% } else { %>
+
+            <div class="alert alert-warning" role="alert">
+              No has empezado ninguna ruta
+            </div>
+  
+            <% } %>
+
         </div>
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-2">
+        <div id="crear-recompensa" class="tab-panel">
+          <div class="form-container">
+            <label><strong>Lista de rutas terminadas</strong><br /></label>
+            <hr />
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="d-lg-flex align-items-lg-center col-8">
+                    <span>Ruta barrio de Tetuan</span>
+                  </div>
+                  <div class="d-lg-flex justify-content-lg-end col-4">
+                    <button
+                      class="btn btn-success btn-sm"
+                      type="button"
+                      id="boton-validar-r"
+                    >
+                      Validar recompensa
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="d-lg-flex align-items-lg-center col-8">
+                    <span>Ruta barrio de Chamartin</span>
+                  </div>
+                  <div class="d-lg-flex justify-content-lg-end col-4">
+                    <button
+                      class="btn btn-success btn-sm"
+                      type="button"
+                      disabled="disabled"
+                    >
+                      Validar recompensa
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <%- include ../partials/footer.ejs %>

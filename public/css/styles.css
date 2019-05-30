@@ -3,6 +3,12 @@
   background-color: rgb(254,16,1);
 }
 
+@media (min-width: 992px){
+  .container-fluid.mt-2.container-expand-md {
+    width: 1200px;
+  }
+}
+
 .tab-panel {
   background-color: #f1f7fc;
   padding: 30px;

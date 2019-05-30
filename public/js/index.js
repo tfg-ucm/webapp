@@ -4,20 +4,26 @@ $(document).ready(() => {
 
     /*-----------LISTENERS-----------*/
 
-    $("#boton-modificar-ppp").on("click", mostrarModalModificarPPP);
-    $("#boton-modificar-pr").on("click", mostrarModalModificarPR);
-    $("#boton-modificar-r").on("click", mostrarModalModificarR);
+
 
 });
 
-function mostrarModalModificarPPP(){
-    $("#modal-modificar-ppp").modal("show");
-}
+function myFunction() {
 
-function mostrarModalModificarPR(){
-    $("#modal-modificar-pr").modal("show");
-}
+    var input, filter, ul, li, a, i, txtValue;
 
-function mostrarModalModificarR(){
-    $("#modal-modificar-r").modal("show");
+    input = document.getElementById("ciudad");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("listaBeacons");
+    li = ul.getElementsByTagName("li");
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("span")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 }
