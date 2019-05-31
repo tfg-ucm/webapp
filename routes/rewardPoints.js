@@ -27,7 +27,8 @@ router.get("/", isAuthenticated, function(req, res, next) {
         }
         return res.status(response.statusCode).render("rewardPoints/details", {
           title: "Reward Points",
-          puntos: body
+          puntos: body,
+          role: req.session.role
         });
       }
     )

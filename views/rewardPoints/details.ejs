@@ -9,7 +9,7 @@
         >
       </li>
 
-      <%/* if(role === "admin" || role === "hostelero"){ */%>
+      <% if(role === "hostelero"){ %>
 
       <li class="nav-item">
         <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2"
@@ -17,7 +17,7 @@
         >
       </li>
 
-      <%/* } */%>
+      <% } %>
 
     </ul>
 
@@ -130,7 +130,7 @@
                         </div>
                       </div>
 
-                      <%/* if(role === "admin" || role === "hostelero"){ */%>
+                      <% if(role === "admin" || role === "hostelero"){ %>
 
                       <!-- Modificar -->
                       <div class="col-6 d-inline-block float-left">
@@ -143,11 +143,11 @@
                         </button>
                       </div>
 
-                      <%/* } */%>
+                      <% } %>
 
                     </form>
 
-                    <%/* if(role === "admin"  || role === "hostelero"){ */%>
+                    <% if(role === "admin"  || role === "hostelero"){ %>
 
                     <!-- Eliminar -->
                     <div class="col-6 d-inline-block">
@@ -161,7 +161,7 @@
                       </form>
                     </div>
 
-                    <%/* } */%>
+                    <% } %>
 
                   </div>
                 </div>
@@ -183,7 +183,7 @@
 
       <!-- Pestana 2 -->
 
-      <%/* if(role === "admin"  || role === "hostelero"){ */%>
+      <% if( role === "hostelero"){ %>
 
       <div class="tab-pane" role="tabpanel" id="tab-2">
         <div id="crear-puntos-recompensa" class="tab-panel">
@@ -243,7 +243,7 @@
         </div>
       </div>
 
-      <%/* } */%>
+      <% } %>
 
     </div>
   </div>

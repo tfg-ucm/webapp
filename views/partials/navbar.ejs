@@ -15,9 +15,15 @@
                         <a class="dropdown-item" role="presentation" href="/reward-points">de Recompensa</a>
                     </div>
                 </li>
+
+                <% if(role === "user" || role === "hostelero"){ %>
+
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" href="/rewards">Recompensas</a>
                 </li>
+
+                <% } %>
+
             </ul>
             <span class="navbar-text actions">
                 <a href="/accounts/details" class="login">Cuenta</a>

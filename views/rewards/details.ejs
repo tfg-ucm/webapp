@@ -1,6 +1,102 @@
 <%- include ../partials/head.ejs %> <%- include ../partials/navbar.ejs %>
 
 <div class="container-fluid mt-2 container-expand-md">
+  
+  <% if(role === "hostelero"){ %>
+
+  <div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1"
+            >Cobrado</a
+          >
+        </li>
+      </ul>
+  
+      <!-- Pestanas -->
+  
+      <div class="tab-content">
+  
+        <!-- Pestana -->
+  
+        <div class="tab-pane active" role="tabpanel" id="tab-1">
+          <div id="crear-recompensa" class="tab-panel">
+  
+            <label>
+              <strong>Lista de recompensas cobradas</strong><br />
+            </label>
+            <hr />
+  
+            <% if(typeof rutas != 'undefined' && rutas.length != 0) { %>
+  
+              <div class="form-container">
+                
+                <div class="accordion">
+  
+                  <% rutas.forEach(result => { %>
+  
+                    <% if (result.terminada){ %>
+  
+                      <div class="card mb-2">
+                          <div class="card-header d-flex  align-items-center">
+        
+                            <h5 class="mr-auto">
+                              <button
+                                class="btn btn-link"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#<%= result.name.replace(/ /g, "") %>"
+                              >
+                                <%= result.name %>
+                              </button>
+                            </h5>
+  
+                            <% if(!result.canjeada){ %>
+                              <h6 class="mr-4 text-danger">
+                                  - <%= result.recompensa %>
+                            </h6>
+                            <% } else {%>
+                              <h6 class="mr-4 text-success">
+                                  + <%= result.recompensa %>
+                            </h6>
+                              <% } %>
+        
+                            <h6 class="text-muted mr-4">
+                              <%= result.ciudad %>
+                            </h6>
+    
+                          </div>
+                          <div
+                            id="<%= result.name.replace(/ /g, "") %>"
+                            class="collapse"
+                            data-parent="#accordion"
+                          >
+                           
+                          </div>
+                      </div>
+  
+                    <% } %>
+  
+                  <% }); %>
+  
+                    </div>
+              </div>
+  
+            <% } else { %>
+  
+              <div class="alert alert-warning" role="alert">
+                No has cobrado ninguna ruta
+              </div>
+    
+            <% } %>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% } else {%>
+  
   <div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -53,6 +149,7 @@
                     <%= result.name %>
                     </button>
                   </h5>
+
                   <h6 class="mr-4 text-muted ">
                       <%= result.ciudad %>
                 </h6>
@@ -73,12 +170,12 @@
 
                         <ul class="list-group text-success">
 
-                          <% result.beacons.forEach(result => { %>
+                          <% result.beacons.forEach(beacon1 => { %>
 
-                          <% if (result.validado){ %>
+                          <% if (beacon1.validado){ %>
 
                           <li class="list-group-item">
-                            <div><span><%= result.name %></span></div>
+                            <div><span><%= beacon1.name %></span></div>
                           </li>
 
                           <% } %>
@@ -96,31 +193,31 @@
 
                         <ul class="list-group text-danger">
 
-                            <% result.beacons.forEach(beacon2 => { %>
+                          <% result.beacons.forEach(beacon2 => { %>
 
-                              <% if (!beacon2.validado){ %>
+                            <% if (!beacon2.validado){ %>
 
-                          <form method="POST" action="/beacons/validate/<%= beacon2.name %>">
-                          <li class="list-group-item">
-                            <div>
-                              <div class="row">
-                                <div class="d-lg-flex align-items-lg-center col-6">
-                                  <span><%= beacon2.name %></span>
-                                </div>
-                                <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6">
-                                  <input class="d-none" type="text" name="reward" value="<%= result.name %>">
-                                  <button
-                                    class="btn btn-success btn-sm"
-                                    type="submit"
-                                  >
-                                    Validar
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </form>
-                          <% } %>
+                              <form method="POST" action="/beacons/validate/<%= beacon2.name %>">
+                                <li class="list-group-item">
+                                  <div>
+                                    <div class="row">
+                                      <div class="d-lg-flex align-items-lg-center col-6">
+                                        <span><%= beacon2.name %></span>
+                                      </div>
+                                      <div class="d-lg-flex justify-content-lg-end align-items-lg-center col-6">
+                                        <input class="d-none" type="text" name="reward" value="<%= result.name %>">
+                                        <button
+                                          class="btn btn-success btn-sm"
+                                          type="submit"
+                                        >
+                                          Validar
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </form>
+                            <% } %>
                           <% }); %>
 
                         </ul>
@@ -143,54 +240,142 @@
               No has empezado ninguna ruta
             </div>
   
-            <% } %>
+          <% } %>
 
         </div>
       </div>
+
+      <!-- Pestana 2 -->
+
       <div class="tab-pane" role="tabpanel" id="tab-2">
         <div id="crear-recompensa" class="tab-panel">
-          <div class="form-container">
-            <label><strong>Lista de rutas terminadas</strong><br /></label>
-            <hr />
-            <ul class="list-group">
-              <li class="list-group-item">
-                <div class="row">
-                  <div class="d-lg-flex align-items-lg-center col-8">
-                    <span>Ruta barrio de Tetuan</span>
+
+          <label>
+            <strong>Lista de rutas terminadas</strong><br />
+          </label>
+          <hr />
+
+          <% if(typeof rutas != 'undefined' && rutas.length != 0) { %>
+
+            <div class="form-container">
+              
+              <div class="accordion">
+
+                <% rutas.forEach(result => { %>
+
+                  <% if (result.terminada){ %>
+
+                    <div class="card mb-2">
+                        <div class="card-header d-flex  align-items-center">
+      
+                          <h5 class="mr-auto">
+                            <button
+                              class="btn btn-link"
+                              type="button"
+                              data-toggle="collapse"
+                              data-target="#<%= result.name.replace(/ /g, "") %>"
+                            >
+                              <%= result.name %>
+                            </button>
+                          </h5>
+
+                          <% if(result.canjeada){ %>
+                            <h6 class="mr-4 text-danger">
+                                - <%= result.recompensa %>
+                          </h6>
+                          <% } else {%>
+                            <h6 class="mr-4 text-success">
+                                + <%= result.recompensa %>
+                          </h6>
+                            <% } %>
+      
+                          <h6 class="text-muted mr-4">
+                            <%= result.ciudad %>
+                          </h6>
+  
+                        </div>
+                        <div
+                          id="<%= result.name.replace(/ /g, "") %>"
+                          class="collapse"
+                          data-parent="#accordion"
+                        >
+                          <div class="card-body">
+      
+                              <!-- Lista de puntos de recompensa -->
+                              <label>
+                                <strong>Puntos donde canjear la recompensa</strong
+                                ><br />
+                              </label>
+                              <hr />
+      
+                              <div class="form-group">
+                                <ul class="list-group">
+                                <% result.puntosRecompensa.forEach(res => { %>
+
+                                  <form method="POST" action="/rewards/claim/<%= result.name %>">
+                                    
+                                    <input class="d-none" type="text" name="id" value="<%= res.id %>">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                      <div><span><%= res.name %></span></div>
+
+                                      <% if(result.canjeada){ %>
+
+                                        <div>
+                                            <button
+                                              class="btn btn-success btn-sm"
+                                              disabled 
+                                            >
+                                            Recompensa canjeada
+                                            </button>
+                                          </div>
+
+                                      <% } else { %>
+
+                                        <div>
+                                            <button
+                                              class="btn btn-success btn-sm"
+                                              type="submit"  
+                                            >
+                                            Canjear recompensa
+                                            </button>
+                                          </div>
+                                
+                                      <% } %>
+                                      
+                                    </li>
+
+                                  </form>
+      
+                                <% }); %>
+                                </ul>
+                              </div>
+    
+                          </div>
+                        </div>
+                    </div>
+
+                  <% } %>
+
+                <% }); %>
+
                   </div>
-                  <div class="d-lg-flex justify-content-lg-end col-4">
-                    <button
-                      class="btn btn-success btn-sm"
-                      type="button"
-                      id="boton-validar-r"
-                    >
-                      Validar recompensa
-                    </button>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="row">
-                  <div class="d-lg-flex align-items-lg-center col-8">
-                    <span>Ruta barrio de Chamartin</span>
-                  </div>
-                  <div class="d-lg-flex justify-content-lg-end col-4">
-                    <button
-                      class="btn btn-success btn-sm"
-                      type="button"
-                      disabled="disabled"
-                    >
-                      Validar recompensa
-                    </button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+            </div>
+
+          <% } else { %>
+
+            <div class="alert alert-warning" role="alert">
+              No has terminado ninguna ruta
+            </div>
+  
+          <% } %>
+
         </div>
       </div>
     </div>
   </div>
+
+  <% } %>
+
 </div>
 
 <%- include ../partials/footer.ejs %>

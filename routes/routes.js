@@ -41,10 +41,12 @@ router.get("/", isAuthenticated, function(req, res, next) {
                 errors: [bodyRoutes]
               });
             }
+
             return res.status(response.statusCode).render("routes/details", {
                 title: "Rutas",
                 rutas: bodyRoutes,
-                puntos: puntos
+                puntos: puntos,
+                role: req.session.role
               });
           }
         )

@@ -9,7 +9,7 @@
         >
       </li>
 
-      <%/* if(role === "admin"){ */%>
+      <% if(role === "admin"){ %>
 
       <li class="nav-item">
         <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2"
@@ -17,7 +17,7 @@
         >
       </li>
 
-      <%/* } */%>
+      <% } %>
     </ul>
 
     <!-- Pestanas -->
@@ -61,6 +61,8 @@
                       <%= result.ciudad %>
                     </h6>
 
+                    <% if(role === "user"){%>
+
                     <form 
                     method="POST" 
                     action="/rewards">
@@ -75,6 +77,9 @@
                           Empezar
                         </button>
                     </form>
+
+                    <% } %>
+
                   </div>
                   <div
                     id="<%= result.name.replace(/ /g, "") %>"
@@ -149,10 +154,10 @@
                           </ul>
                         </div>
 
-                        <%/* if(role === "admin"){ */%>
+                        <% if(role === "admin"){ %>
 
                           <!-- Modificar -->
-                          <div class="col-6 d-inline-block float-left">
+                          <!-- <div class="col-6 d-inline-block float-left">
                             <button
                               class="btn btn-primary btn-block"
                               type="submit"
@@ -160,16 +165,16 @@
                             >
                               Modificar
                             </button>
-                          </div>
+                          </div> -->
     
-                        <%/* } */%>
+                        <% } %>
 
                       </form>
 
-                      <%/* if(role === "admin"){ */%>
+                      <% if(role === "admin"){ %>
 
                         <!-- Eliminar -->
-                        <div class="col-6 d-inline-block">
+                        <div class="col-12 d-inline-block">
                           <form
                             method="POST"
                             action="/routes/<%= result._id %>?_method=DELETE"
@@ -180,7 +185,7 @@
                           </form>
                         </div>
     
-                      <%/* } */%>
+                      <% } %>
 
                     </div>
                   </div>

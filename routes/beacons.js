@@ -20,6 +20,7 @@ router.get("/", isAuthenticated, function(req, res, next) {
           errors: [body.error]
         });
       }
+
       return res.status(response.statusCode).render("beacons/details", {
         title: "Beacons",
         puntos: body,
@@ -149,12 +150,18 @@ router.post("/validate/:name", isAuthenticated, function(req, res, next) {
           });
         }
 
+        let aux = false;
+
         response.body.beacons.forEach(beacon => {
           if (!beacon.validado) {
-            return res.redirect("/rewards");
+            aux = true;
           }
         });
 
+        if (aux) {
+          return res.redirect("/rewards");
+        }
+        
         request
           .post(
             config.apiUrl + "rewards/validate",
@@ -181,28 +188,8 @@ router.post("/validate/:name", isAuthenticated, function(req, res, next) {
               }
               return res.redirect("/rewards");
               
-            }
-          )
-          .auth(null, null, true, req.session.token);
-      }
-    )
-    .auth(null, null, true, req.session.token);
-
-  /**
-   * Valida un punto de una ruta.
-   *
-   * Es necesario hacer una peticion a la api: /beacons/validate/:name
-   * (name es el nombre del beacon a validar) y pasar:
-   *
-   * - name de la recompensa en el req.body.reward
-   *
-   * La api buscara el beacon y lo marcara como validado.
-   * La api devuelve la recompensa con el beacon validado.
-   *
-   * Cuando se recibe la recompensa se deberia comprobar si todos los puntos han sido
-   * validados, en cuyo caso se haria una llamada a la api para solicitar el pago.
-   * Esta llamada se hace a: /rewards/validate/:name (name es el nombre de la reward).
-   */
+            }).auth(null, null, true, req.session.token);
+      }).auth(null, null, true, req.session.token);
     
 });
 
