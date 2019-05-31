@@ -1,4 +1,4 @@
-# Sismotur Webapp
+# Webapp
 
 ## How to test
 Execute the next command placed in directory of the project:
